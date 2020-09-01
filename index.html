@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<br>
+<hr>
+{% for post in paginator.posts %}
+<div class="article">
+    <div class="well">
+        <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+        <h4>{{ post.date | date: "%b %d, %Y" }}</h4>
+	{{ post.excerpt }}
+    </div>
+</div>
+<hr>
+{% endfor %}
+<br>
+
+<!-- Pagination links -->
+<div class="page">
+    {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1 %}
+            <a class="btn btn-primary btn-sm" href="/">Home</a>
+            <a class="btn btn-primary btn-sm" href="/">Prev</a>
+        {% else %}
+            <a class="btn btn-primary btn-sm" href="/">Home</a>
+            <a class="btn btn-primary btn-sm" href="/page{{paginator.previous_page}}/">Prev</a>
+        {% endif %}
+    {% else %}
+        <span><a class="btn btn-primary btn-sm disabled">Home</a></span>
+        <span><a class="btn btn-primary btn-sm disabled">Prev</a></span>
+    {% endif %}
+
+    <span><a class="btn btn-primary btn-sm disabled">{{paginator.page}}/{{paginator.total_pages}}</a></span>
+
+    {% if paginator.next_page %}
+        <a class="btn btn-primary btn-sm" href="/page{{paginator.next_page}}/">Next</a>
+        <a class="btn btn-primary btn-sm" href="/page{{paginator.total_pages}}/">Last</a>
+    {% else if paginator.page == paginator.total_pages %}
+        <span><a class="btn btn-primary btn-sm disabled">Next</a></span>
+        <span><a class="btn btn-primary btn-sm disabled">Last</a></span>
+    {% endif %}
+</div>

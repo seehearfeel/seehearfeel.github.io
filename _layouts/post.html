@@ -1,0 +1,59 @@
+<table id="tab" align=center style="table-layout: fixed; word-wrap: break-word; background: #F0F0F0">
+
+<script type="text/javascript">
+var ismobile = navigator.userAgent.match(/Mobi|Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
+if(ismobile)
+{
+    document.getElementById("tab").width = "100%";
+}
+else
+{
+    document.getElementById("tab").width = "60%";
+}
+</script>
+
+<tr>
+<td>
+{% include header.html %}
+
+<br>
+<hr>
+<div class="post">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <h4>{{ page.date | date: "%b %d, %Y" }}</h4>
+    {{ content }}
+</div>
+
+<hr>
+<div class="related">
+    <h3>Related Posts</h3>
+    <ul class="related-posts">
+        {% if page.previous %}
+            <li class="previous">Prev Post: <a href="{{ page.previous.url }}">{{ page.previous.title }}</a></li>
+        {% else %}
+            <li class="previous disabled"><a>Prev Post: None</a></li>
+        {% endif %}
+
+        {% if page.next %}
+            <li class="next">Next Post: <a href="{{ page.next.url }}">{{ page.next.title }}</a></li>
+        {% else %}
+            <li class="next disabled"><a>Next Post: None</a>
+        {% endif %}
+    </ul>
+</div>
+
+<hr>
+<div class="recent">
+    <h3>Recent Posts</h3>
+    <ul class="recent-posts">
+        {% for post in site.related_posts limit:3 %}
+            <li>{{ post.date | date: "%b %d, %Y" }} <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+<hr>
+
+{% include footer.html %}
+</td>
+</tr>
+</table>
