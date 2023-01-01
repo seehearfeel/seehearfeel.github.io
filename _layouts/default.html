@@ -1,0 +1,26 @@
+<table id="tab" align=center style="table-layout: fixed; word-wrap: break-word; background: #F0F0F0">
+
+<script type="text/javascript">
+var ismobile = navigator.userAgent.match(/Mobi|Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i);
+if(ismobile)
+{
+    document.getElementById("tab").width = "100%";
+}
+else
+{
+    document.getElementById("tab").width = "60%";
+}
+</script>
+
+<tr>
+<td>
+{% include header.html %}
+
+<div class="container">
+  {{ content }}
+</div>
+
+{% include footer.html %}
+</td>
+</tr>
+</table>
