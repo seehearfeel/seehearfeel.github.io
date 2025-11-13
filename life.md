@@ -1092,6 +1092,7 @@ it can be acquired through proper training.
 		imgsrc[1044] = "/walks/walk20251110.png";
 		imgsrc[1045] = "/walks/walk20251111.png";
 		imgsrc[1046] = "/walks/walk20251112.png";
+		imgsrc[1047] = "/walks/walk20251113.png";
 
 		document.getElementById("walk_days").innerHTML = imgsrc.length;
 		document.getElementById("walk_dist").innerHTML = imgsrc.length * 6;
